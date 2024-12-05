@@ -277,7 +277,14 @@ method_loadings$variance_explained <- method_loadings$est.std^2
 # ----------------------------------------------------
 # Structural Models
 # ----------------------------------------------------
-
+# Create parcels for LMX dimensions
+data <- data %>%
+  mutate(
+    LMX_parcel1 = rowMeans(select(., LMX_1, LMX_8, LMX_12)), # Professional Respect
+    LMX_parcel2 = rowMeans(select(., LMX_3, LMX_6, LMX_10)), # Affect
+    LMX_parcel3 = rowMeans(select(., LMX_4, LMX_7, LMX_11)), # Contribution
+    LMX_parcel4 = rowMeans(select(., LMX_2, LMX_5, LMX_9))   # Loyalty
+  )
 # ----------------------------------------------------
 # Structural Baseline Model
 # ----------------------------------------------------
